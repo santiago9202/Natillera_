@@ -69,40 +69,49 @@ internal class Program
                 {
                     aporteMensual2 -= MULTA;
                 }
+
+                aporteTotal1 += aporteMensual1;
+                aporteTotal2 += aporteMensual2;
+                rendimientoTotal1 += rendimientoMensual1;
+                rendimientoTotal2 += rendimientoMensual2;
+
+                Console.WriteLine($"MES {mes}\n" +
+                                     $"Socio 1:\n" +
+                                     $"Aporte: {aporteMensual1:C}\n" +
+                                     $"Tasa: {tasaMensual1}%\n" +
+                                     $"Rendimientos: {rendimientoMensual1:C}\n" +
+                                     $"Bono: {bonoMensual1:C}\n" +
+                                     $"Socio 2:\n" +
+                                     $"Aporte: {aporteMensual2:C}\n" +
+                                     $"Tasa: {tasaMensual2}%\n" +
+                                     $"Rendimientos: {rendimientoMensual2:C}\n" +
+                                     $"Bono: {bonoMensual2:C}\n" +
+                                     $"---------------------------------------\n");
             }
-            aporteTotal1 += aporteMensual1;
-            aporteTotal2 += aporteMensual2;
-            rendimientoTotal1 += rendimientoMensual1;
-            rendimientoTotal2 += rendimientoMensual2;
-        }
 
-    }
+            // Calculo de totales netos
+            aporteTotalNeto1 = rendimientoTotal1 + aporteTotal1 + bonoTotal1;
+            aporteTotalNeto2 = rendimientoTotal2 + aporteTotal2 + bonoTotal2;
 
-}
-        
+            Console.WriteLine($"Socio 1:\n" +
+                              $"Aporte total: {aporteTotal1:C}\n" +
+                              $"Rendimientos totales: {rendimientoTotal1:C}\n" +
+                              $"Bonos totales: {bonoTotal1:C}\n" +
+                              $"--------------------------------\n" +
+                              $"TOTAL NETO: {aporteTotalNeto1:C}\n\n" +
+                              $"Socio 2:\n" +
+                              $"Aporte total: {aporteTotal2:C}\n" +
+                              $"Rendimientos totales: {rendimientoTotal2:C}\n" +
+                              $"Bonos totales: {bonoTotal2:C}\n" +
+                              $"--------------------------------\n" +
+                              $"TOTAL NETO: {aporteTotalNeto2:C}\n\n");
 
-Console.Write($"MES {mes}\n" +
-                      $"Aportes: {aporteMensual:C}\n" +
-                      $"Tasa: {tasaMensual}%\n" +
-                      $"Rendimientos: {rendimientoMensual:C}\n" +
-                      $"Bono: {bonoMensual:C}\n" +
-                      $"---------------------------------------\n" +
-                      $" \n");
-    }
-
-}       aporteTotalNeto = rendimientoTotal + aporteTotal + bonoTotal;
-
-            Console.Write($"Aportes totales: {aporteTotal:C}\n" +
-                          $"Rendimientos totales: {rendimientoTotal:C}\n" +
-                          $"Bonos totales: {bonoTotal:C}\n" +
-                          "--------------------------------\n" +
-                          $"TOTAL NETO: {aporteTotalNeto:C}\n" +
-                          $" \n");
-
-
-            Console.WriteLine("¿Desea ingresra a la natillera para el siguiente año? (s/n)");
+            // Preguntar si desea continuar
+            Console.WriteLine("¿Desea ingresar a la natillera para el siguiente año? (s/n)");
             continuar = Console.ReadLine().ToLower();
             if (continuar == "n") volver = false;
         }
+
+        
     }
 }
