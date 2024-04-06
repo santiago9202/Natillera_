@@ -16,9 +16,12 @@ internal class Program
         const double BONO = 0.4; //Snake Case:Notación para constantes.
         const decimal MULTA = 20000M;
         const decimal INTERES_PRESTAMO = 0.025M;
+
         while (volver)
         {
-            decimal aporteMensual, rendimientoMensual, aporteTotal = 0, rendimientoTotal = 0, bonoMensual = 0, bonoTotal = 0, aporteTotalNeto, tasaMensual;
+            decimal aporteMensual1, aporteMensual2, rendimientoMensual1, rendimientoMensual2, aporteTotal1 = 0, aporteTotal2 = 0,
+               rendimientoTotal1 = 0, rendimientoTotal2 = 0, bonoMensual1 = 0, bonoMensual2 = 0, bonoTotal1 = 0, bonoTotal2 = 0,
+                    aporteTotalNeto1, aporteTotalNeto2, tasaMensual1, tasaMensual2;
             string continuar;
 
             //Clase random
@@ -26,19 +29,40 @@ internal class Program
 
             for (int mes = 1; mes <= 12; mes++)
             {
+                //socio_1
                 Console.Write($"Ingrese la cantidad que desea ahorrar en el mes {mes}: ");
-                aporteMensual = Convert.ToDecimal(Console.ReadLine());
+                aporteMensual1 = Convert.ToDecimal(Console.ReadLine());
 
-                tasaMensual = (decimal)random.Next(1, 51) / 10;
-                rendimientoMensual = aporteMensual * (tasaMensual / 100);
 
-                if (tasaMensual < 3.5M)
+                //socio_2
+                Console.Write($"Ingrese la cantidad que desea ahorrar en el mes {mes}: ");
+                aporteMensual2 = Convert.ToDecimal(Console.ReadLine());
+
+                //Tasa mensual para ambos socios
+
+                tasaMensual1 = (decimal)random.Next(1, 51) / 10;
+                tasaMensual2 = (decimal)random.Next(1, 51) / 10;
+
+                //Rendimientos mensuales para ambos
+                rendimientoMensual1 = aporteMensual1 * (tasaMensual1 / 100);
+                rendimientoMensual2 = aporteMensual2 * (tasaMensual2 / 100);
+
+
+                if (tasaMensual1 < 1.5M) //bomo primer socio
                 {
-                    bonoMensual = aporteMensual * (decimal)BONO;
-                    bonoTotal += bonoMensual;
-                    bonoMensual = 0;
+                    bonoMensual1 = aporteMensual1 * (decimal)BONO;
+                    bonoTotal1 += bonoMensual1;
+                    bonoMensual1 = 0;
                 }
 
+                if (tasaMensual2 < 1.5M) //bono segundo socio
+                {
+                    bonoMensual2 = aporteMensual2 * (decimal)BONO;
+                    bonoTotal2 += bonoMensual2;
+                    bonoMensual2 = 0;
+                {
+
+                }
                 aporteTotal += aporteMensual;
                 rendimientoTotal += rendimientoMensual;
 
