@@ -60,22 +60,37 @@ internal class Program
                     bonoMensual2 = aporteMensual2 * (decimal)BONO;
                     bonoTotal2 += bonoMensual2;
                     bonoMensual2 = 0;
-                {
-
                 }
-                aporteTotal += aporteMensual;
-                rendimientoTotal += rendimientoMensual;
-
-                Console.Write($"MES {mes}\n" +
-                              $"Aportes: {aporteMensual:C}\n" +
-                              $"Tasa: {tasaMensual}%\n" +
-                              $"Rendimientos: {rendimientoMensual:C}\n" +
-                              $"Bono: {bonoMensual:C}\n" +
-                              $"---------------------------------------\n" +
-                              $" \n");
+                if (aporteMensual1 == 0) 
+                {
+                    aporteMensual1 -= MULTA;
+                }
+                if (aporteMensual2 == 0) 
+                {
+                    aporteMensual2 -= MULTA;
+                }
             }
+            aporteTotal1 += aporteMensual1;
+            aporteTotal2 += aporteMensual2;
+            rendimientoTotal1 += rendimientoMensual1;
+            rendimientoTotal2 += rendimientoMensual2;
+        }
 
-            aporteTotalNeto = rendimientoTotal + aporteTotal + bonoTotal;
+    }
+
+}
+        
+
+Console.Write($"MES {mes}\n" +
+                      $"Aportes: {aporteMensual:C}\n" +
+                      $"Tasa: {tasaMensual}%\n" +
+                      $"Rendimientos: {rendimientoMensual:C}\n" +
+                      $"Bono: {bonoMensual:C}\n" +
+                      $"---------------------------------------\n" +
+                      $" \n");
+    }
+
+}       aporteTotalNeto = rendimientoTotal + aporteTotal + bonoTotal;
 
             Console.Write($"Aportes totales: {aporteTotal:C}\n" +
                           $"Rendimientos totales: {rendimientoTotal:C}\n" +
